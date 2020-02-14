@@ -1,0 +1,124 @@
+SQL> /* Shows the data for each table */
+SQL> select * from majors;
+
+MAJ MDESC                                                                       
+--- ------------------------------                                              
+ACC Accounting                                                                  
+FIN Finance                                                                     
+IS  Information Systems                                                         
+MKT Marketing                                                                   
+
+SQL> select * from students;
+
+SNU SNAME        STANDING MAJ        GPA  MAJOR_GPA                             
+--- ---------- ---------- --- ---------- ----------                             
+101 Andy                3 IS         2.8        3.2                             
+102 Betty               2            3.2                                        
+103 Cindy               3 IS         2.5        3.5                             
+104 David               2 FIN        3.3          3                             
+105 Ellen               1            2.8                                        
+106 Frank               3 MKT        3.1        2.9                             
+
+6 rows selected.
+
+SQL> select * from courses;
+
+DEP CNU CTITLE                               CRHR   STANDING                    
+--- --- ------------------------------ ---------- ----------                    
+IS  300 Intro to MIS                            3          2                    
+IS  301 Business Communicatons                  3          2                    
+IS  310 Statistics                              3          2                    
+IS  340 Programming                             3          3                    
+IS  380 Database                                3          3                    
+IS  385 Systems                                 3          3                    
+IS  480 Adv Database                            3          4                    
+
+7 rows selected.
+
+SQL> select * from schclasses;
+
+   CALLNUM       YEAR SEM DEP CNU    SECTION   CAPACITY                         
+---------- ---------- --- --- --- ---------- ----------                         
+     10110       2014 Fa  IS  300          1         45                         
+     10115       2014 Fa  IS  300          2        118                         
+     10120       2014 Fa  IS  300          3         35                         
+     10125       2014 Fa  IS  301          1         35                         
+     10130       2014 Fa  IS  301          2         35                         
+     10135       2014 Fa  IS  310          1         35                         
+     10140       2014 Fa  IS  310          2         35                         
+     10145       2014 Fa  IS  340          1         30                         
+     10150       2014 Fa  IS  380          1         33                         
+     10155       2014 Fa  IS  385          1         35                         
+     10160       2014 Fa  IS  480          1         35                         
+
+11 rows selected.
+
+SQL> select * from enrollments;
+
+SNU    CALLNUM GR                                                               
+--- ---------- --                                                               
+101      10110 A                                                                
+102      10110 B                                                                
+103      10120 A                                                                
+101      10125                                                                  
+102      10130                                                                  
+
+SQL> select * from waitlist;
+
+no rows selected
+
+SQL> 
+SQL> 
+SQL> /* Shows the data types */
+SQL> describe majors;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ MAJOR                                     NOT NULL VARCHAR2(3)
+ MDESC                                              VARCHAR2(30)
+
+SQL> describe students;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SNUM                                      NOT NULL VARCHAR2(3)
+ SNAME                                              VARCHAR2(10)
+ STANDING                                           NUMBER(1)
+ MAJOR                                              VARCHAR2(3)
+ GPA                                                NUMBER(2,1)
+ MAJOR_GPA                                          NUMBER(2,1)
+
+SQL> describe courses;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPT                                      NOT NULL VARCHAR2(3)
+ CNUM                                      NOT NULL VARCHAR2(3)
+ CTITLE                                             VARCHAR2(30)
+ CRHR                                               NUMBER(3)
+ STANDING                                           NUMBER(1)
+
+SQL> describe schclasses;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CALLNUM                                   NOT NULL NUMBER(5)
+ YEAR                                               NUMBER(4)
+ SEMESTER                                           VARCHAR2(3)
+ DEPT                                               VARCHAR2(3)
+ CNUM                                               VARCHAR2(3)
+ SECTION                                            NUMBER(2)
+ CAPACITY                                           NUMBER(3)
+
+SQL> describe enrollments;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SNUM                                      NOT NULL VARCHAR2(3)
+ CALLNUM                                   NOT NULL NUMBER(5)
+ GRADE                                              VARCHAR2(2)
+
+SQL> describe waitlist;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ SNUM                                      NOT NULL VARCHAR2(3)
+ CALLNUM                                   NOT NULL NUMBER(5)
+ REQUESTTIME                                        DATE
+
+SQL> 
+SQL> spool off
